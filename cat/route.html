@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="cats">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script type="text/javascript" src="js/angular.js"></script>
+		<script type="text/javascript" src="js/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="css/route.css"/>
+	</head>
+	<body>
+		<ishead></ishead>
+		<div ng-view=""></div>
+	</body>
+	<script type="text/javascript">
+		var app = angular.module('cats',['ngRoute']);
+		app.config(function($routeProvider){
+			$routeProvider.when('/route',{
+				controller:'routeCtrl',
+				templateUrl:'view/index.html'
+			}).when('/sfzcx',{
+				controller:'sfzcxCtrl',
+				templateUrl:'view/sfzcx.html'
+			}).otherwise({
+				redirectTo:'/route'
+			})
+		});
+		app.directive('ishead',function(){
+			return {
+				restrict: 'EA', //标签和属性的写法激活此组件
+				replace: true,
+				transclude: true,
+				template:'<header><div id="header"><img src="img/logo.png"></div><h3>喵喵助手</h3></header>',
+				link:function(){
+					
+				}
+			}
+		});
+		app.controller('routeCtrl',function(){});
+		app.controller('sfzcxCtrl',['$http',"$scope",function($http,$scope){
+			$scope.getZl = function(){
+				$http.get('sfzcx.php',{
+					params:{
+						id:$scope.id
+					}
+				}).success(function(data){
+				$scope.sfzcx = data.retData;
+					switch($scope.sfzcx.sex){
+						case 'M':
+						$scope.sex = '男';
+						break;
+						case 'F':
+						$scope.sex = '女';
+						break;
+					}
+				})
+			}			
+		}])
+	</script>
+</html>

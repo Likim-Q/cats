@@ -1,0 +1,21 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+body{
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+.clear{
+	margin:0px
+}
