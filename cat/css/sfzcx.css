@@ -1,0 +1,21 @@
+#sfzcx_main{
+	position: absolute;
+	left:50%;
+	top:200px;
+	margin-left: -153px;
+}
+#result{
+	width:306px;
+	height: 121px;
+}
+#result .text{
+	width:300px;
+	height:25px;
+	border:3px solid #000000;
+	outline: none;
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+#result p{
+	line-height: 30px;
+}

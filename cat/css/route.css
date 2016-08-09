@@ -17,7 +17,7 @@ header img{
 	height:80px;
 	width:94px
 }
-section{
+#index_main{
 	width:250px;
 	position: absolute;
 	left:50%;
@@ -32,4 +32,20 @@ section{
 #cat_box{
 	text-align:center;
 	margin-right:50px;
+}
+footer{
+	position: fixed;
+	bottom: 0px;
+	left:50%;
+	margin-left: -200px;
+}
+footer img{
+	width:400px;
+	height:200px
+}
+footer h3{
+	position: fixed;
+	bottom: 140px;
+	left:50%;
+	margin-left:-72px;
 }

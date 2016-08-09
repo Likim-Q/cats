@@ -1,6 +1,8 @@
-<div>
-	<input ng-model="id" ng-change="getZl()" type="text" placeholder="请输入喵身份证">
-	<p>你是{{sex}}猫</p>
-	<p>你是</p>
-	<p></p>
-</div>
+<section id="sfzcx_main">
+	<div id="result">
+		<input class="text" ng-model="id"  type="text" placeholder="请输入喵身份证" ng-change="getZl()">
+		<p>你的性别是：{{sex}}喵</p>
+		<p>你出生于：{{sfzcx.birthday}}</p>
+		<p>你来自：{{sfzcx.address}}</p>
+	</div>
+</section>

@@ -8,10 +8,13 @@
 		<script type="text/javascript" src="js/angular-route.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/common.css"/>
 		<link rel="stylesheet" type="text/css" href="css/route.css"/>
+		<link rel="stylesheet" type="text/css" href="css/sfzcx.css"/>
+		<link rel="stylesheet" type="text/css" href="css/sjhmcx.css"/>
 	</head>
 	<body>
 		<ishead></ishead>
 		<div ng-view=""></div>
+		<isfoot></isfoot>
 	</body>
 	<script type="text/javascript">
 		var app = angular.module('cats',['ngRoute']);
@@ -22,16 +25,33 @@
 			}).when('/sfzcx',{
 				controller:'sfzcxCtrl',
 				templateUrl:'view/sfzcx.html'
+			}).when('/sjhmcx',{
+				controller:'sjhmcxCtrl',
+				templateUrl:'view/sjhmcx.html'
+			}).when('/xzcx',{
+				controller:'xzcxCtrl',
+				templateUrl:'view/xzcx.html'
 			}).otherwise({
 				redirectTo:'/route'
 			})
 		});
-		app.directive('ishead',function(){
+		app.directive('ishead',function($location){
 			return {
 				restrict: 'EA', //标签和属性的写法激活此组件
 				replace: true,
 				transclude: true,
 				template:'<header><div id="header"><img src="img/logo.png"></div><h3>喵喵助手</h3></header>',
+				link:function(scope,element,attr){
+					console.log(location.hash)
+				}
+			}
+		});
+		app.directive('isfoot',function(){
+			return {
+				restrict: 'EA', //标签和属性的写法激活此组件
+				replace: true,
+				transclude: true,
+				template:'<footer><a href="#/route"><h3>点击返回首页，喵~</h3><img src="img/footer.png"/></a></footer>',
 				link:function(){
 					
 				}
@@ -53,9 +73,29 @@
 						case 'F':
 						$scope.sex = '女';
 						break;
+						default:
+						$scope.sex = '';
+						break;
 					}
 				})
 			}			
+		}])
+		app.controller('sjhmcxCtrl',['$http',"$scope",function($http,$scope){
+			$scope.hmcx = function(){
+				console.log(typeof($scope.phone))
+				$http.get('sjhmcx.php',{
+					params:{
+						phone:$scope.phone
+					}
+				}).success(function(data){
+					$scope.sfzcx = data.retData;
+				})
+			}					
+		}])
+		app.controller('xzcxCtrl',['$http',"$scope",function($http,$scope){
+			$http.get('xzcx.php').success(function(data){
+				console.log(data)
+			})					
 		}])
 	</script>
 </html>
