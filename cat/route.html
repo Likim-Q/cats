@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="css/route.css"/>
 		<link rel="stylesheet" type="text/css" href="css/sfzcx.css"/>
 		<link rel="stylesheet" type="text/css" href="css/sjhmcx.css"/>
+		<link rel="stylesheet" type="text/css" href="css/xzcx.css"/>
 	</head>
 	<body>
 		<ishead></ishead>
@@ -42,7 +43,7 @@
 				transclude: true,
 				template:'<header><div id="header"><img src="img/logo.png"></div><h3>喵喵助手</h3></header>',
 				link:function(scope,element,attr){
-					console.log(location.hash)
+					
 				}
 			}
 		});
@@ -52,7 +53,7 @@
 				replace: true,
 				transclude: true,
 				template:'<footer><a href="#/route"><h3>点击返回首页，喵~</h3><img src="img/footer.png"/></a></footer>',
-				link:function(){
+				link:function(scope,element,attr){
 					
 				}
 			}
@@ -93,9 +94,37 @@
 			}					
 		}])
 		app.controller('xzcxCtrl',['$http',"$scope",function($http,$scope){
-			$http.get('xzcx.php').success(function(data){
-				console.log(data)
-			})					
+			$scope.sites = [
+			    {xingzuo:"白羊座"},
+			    {xingzuo:"金牛座"},
+			    {xingzuo:"双子座"},
+			    {xingzuo:"巨蟹座"},
+			    {xingzuo:"狮子座"},
+			    {xingzuo:"处女座"},
+			    {xingzuo:"天秤座"},
+			    {xingzuo:"天蝎座"},
+			    {xingzuo:"射手座"},
+			    {xingzuo:"魔蝎座"},
+			    {xingzuo:"水瓶座"},
+			    {xingzuo:"双鱼座"},
+			];
+			$scope.days = [
+				{day:"今天运势",dayE:"today"},
+				{day:"明天运势",dayE:"tomorrow"},
+				{day:"这周运势",dayE:"week"},
+				{day:"下周运势",dayE:"nextweek"},
+			]
+			$scope.change = function(){
+				$http.get('xzcx.php',{
+					params:{
+						consName:$scope.selectValue,
+						type:$scope.dayValue
+					}
+				}).success(function(data){
+					$scope.data = data
+				})
+			}
+					
 		}])
 	</script>
 </html>

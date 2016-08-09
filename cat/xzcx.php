@@ -1,6 +1,6 @@
 <?php
     $ch = curl_init();
-    $url = 'http://apis.baidu.com/bbtapi/constellation/constellation_query?consName=%E5%8F%8C%E5%AD%90%E5%BA%A7&type=today';
+    $url = 'http://apis.baidu.com/bbtapi/constellation/constellation_query?consName='.$_GET['consName'].'&type='.$_GET['type'];
     $header = array(
         'apikey:d44aa60bc3d624a18a205d4513b75090',
     );

@@ -1,0 +1,15 @@
+#xzcx{
+	width:184px;
+	height:400px;
+	position: absolute;
+	left:50%;
+	top:180px;
+	margin-left: -92px;
+}
+#xzcx label,select{
+	margin-bottom:20px ;
+}
+#xzcx ul li{
+	margin-top:20px;
+	list-style: none;
+}

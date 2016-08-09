@@ -32,10 +32,11 @@ header img{
 #cat_box{
 	text-align:center;
 	margin-right:50px;
+	margin-bottom:30px;
 }
 footer{
-	position: fixed;
-	bottom: 0px;
+	position: absolute;
+	bottom:-250px;
 	left:50%;
 	margin-left: -200px;
 }
@@ -44,7 +45,7 @@ footer img{
 	height:200px
 }
 footer h3{
-	position: fixed;
+	position: absolute;
 	bottom: 140px;
 	left:50%;
 	margin-left:-72px;
