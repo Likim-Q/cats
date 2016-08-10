@@ -1,10 +1,11 @@
 #xzcx{
-	width:184px;
-	height:400px;
-	position: absolute;
-	left:50%;
-	top:180px;
-	margin-left: -92px;
+	overflow: hidden;
+	margin-top: 50px;
+	margin-bottom:20%;
+}
+#xzcx .center{
+	width:60%;
+	margin: 0 auto;
 }
 #xzcx label,select{
 	margin-bottom:20px ;
@@ -12,4 +13,44 @@
 #xzcx ul li{
 	margin-top:20px;
 	list-style: none;
+	line-height: 30px;
+}
+aside{
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	position: absolute;
+	left:0px;
+	top:0px;
+	opacity: 0.5;
+	z-index: 99;
+	
+}
+#img{
+	width:150px;
+	height: 96px;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -75px;
+	margin-top: -50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+aside img{
+	width: 200px;
+	height:150px;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -100px;
+	margin-top: -75px;
+}
+aside h3{
+	position: absolute;
+	color: #11C1F3;
+	left:50%;
+	top:50%;
+	margin-left:-33px;
+	margin-top:50px
 }

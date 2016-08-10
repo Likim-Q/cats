@@ -1,20 +1,27 @@
 <section id="xzcx">
-	<label class="left">选择喵的星座：</label>
-	<select class="left xing" ng-model="selectValue" ng-change="change()">
-		<option ng-repeat="x in sites">{{x.xingzuo}}</option>
-	</select>
-	<label class="left">选择喜欢的日期：</label>
-	<select class="left day" ng-model="dayValue" ng-change="change()">
-		<option ng-repeat="x in days" value={{x.dayE}}>{{x.day}}</option>
-	</select>
-	<p style="clear: both"></p>
-	<ul>
-		<li>喵的星座：{{data.name}}</li>
-		<li>喵选择的日期：{{data.date}}</li>
-		<li>喵的工作运:{{data.work}}{{data.career}}</li>
-		<li>喵的爱情运:{{data.love}}</li>
-		<li>喵的健康:{{data.health}}</li>
-	</ul>
+	<div class="center">
+		<label class="left">选择喵的星座：</label>
+		<select class="left xing" ng-model="selectValue" ng-change="change()">
+			<option ng-repeat="x in sites">{{x.xingzuo}}</option>
+		</select>
+		<label class="left">选择喜欢的日期：</label>
+		<select class="left day" ng-model="dayValue" ng-change="change()">
+			<option ng-repeat="x in days" value={{x.dayE}}>{{x.day}}</option>
+		</select>
+		<p style="clear: both"></p>
+		<ul>
+			<li>喵的星座：{{data.name}}</li>
+			<li>喵选择的日期：{{data.date}}</li>
+			<li>喵的工作运:{{data.work}}{{data.career}}</li>
+			<li>喵的爱情运:{{data.love}}</li>
+			<li>喵的健康:{{data.health}}</li>
+		</ul>
+	</div>
 </section>
-
+<aside class="{{!status?'ng-hide':'ng-show'}}">
+	<div id="img">
+		<img src="img/loading.jpg">
+	</div>
+	<h3>Loading</h3>
+</aside>
 

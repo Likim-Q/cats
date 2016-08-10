@@ -1,0 +1,12 @@
+<section id="njzw_main">
+	<div class="center">
+		<h4>喵问？：{{datas.quest}}</h4>
+		<h4 ng-click="show()">点击显示答案：<span class="{{!text?'ng-hide':'ng-show'}}">{{datas.result}}</span></h4>
+	</div>
+</section>
+<aside class="{{!status?'ng-hide':'ng-show'}}">
+	<div id="img">
+		<img src="img/loading.jpg">
+	</div>
+	<h3>Loading</h3>
+</aside>

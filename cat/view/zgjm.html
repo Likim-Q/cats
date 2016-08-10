@@ -1,0 +1,71 @@
+<section id="zgjm_main">
+	<div class="center">
+		<input style="margin-bottom:20px ;"  type="text" ng-model="word" ng-change="change()" placeholder="你做了什么梦啊？喵~"/>
+		<p><span>喵的梦:</span>{{datas.title}}</p>
+		<p><span>征兆:</span>{{datas.result}}</p>
+	</div>
+</section>
+<aside class="{{!status?'ng-hide':'ng-show'}}">
+	<div id="img">
+		<img src="img/loading.jpg">
+	</div>
+	<h3>Loading</h3>
+</aside>
+<style>
+	#zgjm_main{
+		overflow: hidden;
+		margin-top: 50px;
+		margin-bottom: 44%;
+	}
+	#zgjm_main .center{
+		width:60%;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	#zgjm_main p{
+		line-height: 30px;
+	}
+	span{
+		color:red;
+		font-size: 16px;
+	}
+	aside{
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	position: absolute;
+	left:0px;
+	top:0px;
+	opacity: 0.5;
+	z-index: 99;
+	
+	}
+	#img{
+		width:150px;
+		height: 96px;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		margin-left: -75px;
+		margin-top: -50px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	aside img{
+		width: 200px;
+		height:150px;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		margin-left: -100px;
+		margin-top: -75px;
+	}
+	aside h3{
+		position: absolute;
+		color: #11C1F3;
+		left:50%;
+		top:50%;
+		margin-left:-33px;
+		margin-top:50px
+	}
+</style>

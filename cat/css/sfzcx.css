@@ -1,12 +1,12 @@
 #sfzcx_main{
-	position: absolute;
-	left:50%;
-	top:270px;
-	margin-left: -153px;
+	overflow: hidden;
+	margin-top: 50px;
+	margin-bottom: 44%;
 }
 #result{
 	width:306px;
 	height: 121px;
+	margin: 0 auto;
 }
 #result .text{
 	width:300px;
@@ -18,4 +18,43 @@
 }
 #result p{
 	line-height: 30px;
+}
+aside{
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	position: absolute;
+	left:0px;
+	top:0px;
+	opacity: 0.5;
+	z-index: 99;
+	
+}
+aside h3{
+	position: absolute;
+	color: #11C1F3;
+	left:50%;
+	top:50%;
+	margin-left:-33px;
+	margin-top:50px
+}
+#img{
+	width:150px;
+	height: 96px;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -75px;
+	margin-top: -50px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+aside img{
+	width: 200px;
+	height:150px;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -100px;
+	margin-top: -75px;
 }

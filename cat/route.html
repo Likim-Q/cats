@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="css/sfzcx.css"/>
 		<link rel="stylesheet" type="text/css" href="css/sjhmcx.css"/>
 		<link rel="stylesheet" type="text/css" href="css/xzcx.css"/>
+		<link rel="stylesheet" type="text/css" href="css/njzw.css"/>
 	</head>
 	<body>
 		<ishead></ishead>
@@ -32,6 +33,12 @@
 			}).when('/xzcx',{
 				controller:'xzcxCtrl',
 				templateUrl:'view/xzcx.html'
+			}).when('/njzw',{
+				controller:'njzwCtrl',
+				templateUrl:'view/njzw.html'
+			}).when('/zgjm',{
+				controller:'zgjmCtrl',
+				templateUrl:'view/zgjm.html'
 			}).otherwise({
 				redirectTo:'/route'
 			})
@@ -60,12 +67,15 @@
 		});
 		app.controller('routeCtrl',function(){});
 		app.controller('sfzcxCtrl',['$http',"$scope",function($http,$scope){
+			$scope.status = false
 			$scope.getZl = function(){
+				$scope.status = true
 				$http.get('sfzcx.php',{
 					params:{
 						id:$scope.id
 					}
 				}).success(function(data){
+				$scope.status = !$scope.status;
 				$scope.sfzcx = data.retData;
 					switch($scope.sfzcx.sex){
 						case 'M':
@@ -82,18 +92,21 @@
 			}			
 		}])
 		app.controller('sjhmcxCtrl',['$http',"$scope",function($http,$scope){
+			$scope.status = false
 			$scope.hmcx = function(){
-				console.log(typeof($scope.phone))
+				$scope.status = true
 				$http.get('sjhmcx.php',{
 					params:{
 						phone:$scope.phone
 					}
 				}).success(function(data){
 					$scope.sfzcx = data.retData;
+					$scope.status = !$scope.status;
 				})
 			}					
 		}])
 		app.controller('xzcxCtrl',['$http',"$scope",function($http,$scope){
+			$scope.status = false
 			$scope.sites = [
 			    {xingzuo:"白羊座"},
 			    {xingzuo:"金牛座"},
@@ -113,8 +126,11 @@
 				{day:"明天运势",dayE:"tomorrow"},
 				{day:"这周运势",dayE:"week"},
 				{day:"下周运势",dayE:"nextweek"},
+				{day:"本月运势",dayE:"month"},
+				{day:"本年运势",dayE:"year"}
 			]
 			$scope.change = function(){
+				$scope.status = true
 				$http.get('xzcx.php',{
 					params:{
 						consName:$scope.selectValue,
@@ -122,9 +138,35 @@
 					}
 				}).success(function(data){
 					$scope.data = data
+					$scope.status = !$scope.status;
+				})
+			}		
+		}])
+		app.controller('njzwCtrl',['$http',"$scope",function($http,$scope){
+			$scope.status = true
+			$scope.text = false
+			$scope.show = function(){
+				$scope.text = !$scope.text;
+			}
+			$http.get('njzw.php').success(function(data){
+				$scope.status = false
+				$scope.datas = data.newslist[0]
+			})
+		}])
+		app.controller('zgjmCtrl',['$http',"$scope",function($http,$scope){
+			
+			$scope.change = function(){
+				$scope.status = true
+				$http.get('zgjm.php',{
+					params:{
+						word:$scope.word
+					}
+				}).success(function(data){
+					$scope.status = false
+					$scope.datas = data.newslist[0]
 				})
 			}
-					
+			
 		}])
 	</script>
 </html>

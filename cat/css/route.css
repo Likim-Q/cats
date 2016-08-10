@@ -12,17 +12,17 @@ header{
 }
 h3{
 	margin-top:5px ;
+	margin-bottom: 30px;
 }
 header img{
 	height:80px;
 	width:94px
 }
-#index_main{
+
+#index_main .center{
 	width:250px;
-	position: absolute;
-	left:50%;
-	top:200px;
-	margin-left: -125px;
+	margin: 0 auto;
+	padding-bottom:15% ;
 }
 #cat_box img{
 	width:100px;
@@ -35,18 +35,23 @@ header img{
 	margin-bottom:30px;
 }
 footer{
-	position: absolute;
-	bottom:-250px;
-	left:50%;
-	margin-left: -200px;
+	width:100%;
+	height:200px;
+	overflow: hidden;
+	text-align: center;
+	position: relative;
+}
+footer a{
+	display: block;
+	overflow: hidden;
 }
 footer img{
-	width:400px;
-	height:200px
+	width:100%;
+	height:200px;
 }
 footer h3{
 	position: absolute;
-	bottom: 140px;
-	left:50%;
-	margin-left:-72px;
+	left: 50%;
+	bottom:55%;
+	margin-left: -71px;
 }
