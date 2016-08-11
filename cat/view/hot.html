@@ -1,0 +1,112 @@
+<header id="hotHead">
+	<input ng-model="word" class="hot" type="text" placeholder="关键词" />
+	<button ng-click="search()">搜索</button>
+</header>
+<section id="hot_main" ng-repeat="new in datas">
+	<div class="center">
+		<a href="{{new.url}}">
+		<h3 class="h3">{{new.title}}</h3>
+		<img src="{{new.picUrl}}">
+		<p style="margin-top: 20px"><span><b>发表时间：</b>{{new.ctime}}</span><span><b>来自于：</b>{{new.description}}</span></p>
+		</a>
+	</div>
+</section>
+<footer id="hot_foot">
+	<a style="color:#f00;font-weight:bold;" ng-click="loadMore()">加载更多</a>
+</footer>
+<aside class="{{!status?'ng-hide':'ng-show'}}">
+	<div id="img">
+		<img src="../img/loading.jpg">
+	</div>
+	<h3>Loading</h3>
+</aside>
+<style>
+	#hot_foot{
+		width: 100%;
+		height: 30px;
+		padding-top: 20px;
+		font-size: 16px;
+	}
+	#hotHead{
+		margin-top: 20px;
+		padding-bottom: 20px;
+	}
+	#hotHead button{
+		height:24px;
+		width: 38px;
+		border-radius: 10px;
+		border: none;
+		background: #CCCCCC;
+		outline: none;
+		color: #fff;
+	}
+	#hotHead input{
+		width: 240px;
+		height: 20px;
+		border: 2px solid #000000;
+		border-radius: 10px;
+		padding-left: 10px;
+		outline: none;
+	}
+	#hot_main{
+		overflow: hidden;
+		margin-top: 20px;
+		
+	}
+	#hot_main .center{
+		width:80%;
+		margin: 0 auto;
+		overflow: hidden;
+		border-bottom: 1px dashed #666;
+		padding-bottom: 20px;
+	}
+	#hot_main img{
+		width:100%;
+		height:100%
+	}
+	#hot_main .h3{
+		margin-bottom:20px;
+	}
+	#hot_main .center span{
+		margin-right: 8px;
+		margin-bottom: 10px;
+	}
+	aside{
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	position: absolute;
+	left:0px;
+	top:0px;
+	opacity: 0.5;
+	z-index: 99;
+	}
+	#img{
+		width:150px;
+		height: 96px;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		margin-left: -75px;
+		margin-top: -50px;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+	aside img{
+		width: 200px;
+		height:150px;
+		position: absolute;
+		left: 50%;
+		top:50%;
+		margin-left: -100px;
+		margin-top: -75px;
+	}
+	aside h3{
+		position: absolute;
+		color: #11C1F3;
+		left:50%;
+		top:50%;
+		margin-left:-33px;
+		margin-top:50px
+	}
+</style>

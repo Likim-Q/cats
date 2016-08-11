@@ -4,14 +4,14 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no">
 		<title></title>
-		<script type="text/javascript" src="js/angular.js"></script>
-		<script type="text/javascript" src="js/angular-route.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="css/route.css"/>
-		<link rel="stylesheet" type="text/css" href="css/sfzcx.css"/>
-		<link rel="stylesheet" type="text/css" href="css/sjhmcx.css"/>
-		<link rel="stylesheet" type="text/css" href="css/xzcx.css"/>
-		<link rel="stylesheet" type="text/css" href="css/njzw.css"/>
+		<script type="text/javascript" src="../js/angular.js"></script>
+		<script type="text/javascript" src="../js/angular-route.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/route.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/sfzcx.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/sjhmcx.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/xzcx.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/njzw.css"/>
 	</head>
 	<body>
 		<ishead></ishead>
@@ -23,22 +23,25 @@
 		app.config(function($routeProvider){
 			$routeProvider.when('/route',{
 				controller:'routeCtrl',
-				templateUrl:'view/index.html'
+				templateUrl:'index.html'
 			}).when('/sfzcx',{
 				controller:'sfzcxCtrl',
-				templateUrl:'view/sfzcx.html'
+				templateUrl:'sfzcx.html'
 			}).when('/sjhmcx',{
 				controller:'sjhmcxCtrl',
-				templateUrl:'view/sjhmcx.html'
+				templateUrl:'sjhmcx.html'
 			}).when('/xzcx',{
 				controller:'xzcxCtrl',
-				templateUrl:'view/xzcx.html'
+				templateUrl:'xzcx.html'
 			}).when('/njzw',{
 				controller:'njzwCtrl',
-				templateUrl:'view/njzw.html'
+				templateUrl:'njzw.html'
 			}).when('/zgjm',{
 				controller:'zgjmCtrl',
-				templateUrl:'view/zgjm.html'
+				templateUrl:'zgjm.html'
+			}).when('/hot',{
+				controller:'hotCtrl',
+				templateUrl:'hot.html'
 			}).otherwise({
 				redirectTo:'/route'
 			})
@@ -48,7 +51,7 @@
 				restrict: 'EA', //标签和属性的写法激活此组件
 				replace: true,
 				transclude: true,
-				template:'<header><div id="header"><img src="img/logo.png"></div><h3>喵喵助手</h3></header>',
+				template:'<header><div id="header"><img src="../img/logo.png"></div><h3>喵喵助手</h3></header>',
 				link:function(scope,element,attr){
 					
 				}
@@ -59,7 +62,7 @@
 				restrict: 'EA', //标签和属性的写法激活此组件
 				replace: true,
 				transclude: true,
-				template:'<footer><a href="#/route"><h3>点击返回首页，喵~</h3><img src="img/footer.png"/></a></footer>',
+				template:'<footer><a href="#/route"><h3>点击返回首页，喵~</h3><img src="../img/footer.png"/></a></footer>',
 				link:function(scope,element,attr){
 					
 				}
@@ -70,7 +73,7 @@
 			$scope.status = false
 			$scope.getZl = function(){
 				$scope.status = true
-				$http.get('sfzcx.php',{
+				$http.get('../sfzcx.php',{
 					params:{
 						id:$scope.id
 					}
@@ -95,7 +98,7 @@
 			$scope.status = false
 			$scope.hmcx = function(){
 				$scope.status = true
-				$http.get('sjhmcx.php',{
+				$http.get('../sjhmcx.php',{
 					params:{
 						phone:$scope.phone
 					}
@@ -131,7 +134,7 @@
 			]
 			$scope.change = function(){
 				$scope.status = true
-				$http.get('xzcx.php',{
+				$http.get('../xzcx.php',{
 					params:{
 						consName:$scope.selectValue,
 						type:$scope.dayValue
@@ -148,16 +151,15 @@
 			$scope.show = function(){
 				$scope.text = !$scope.text;
 			}
-			$http.get('njzw.php').success(function(data){
+			$http.get('../njzw.php').success(function(data){
 				$scope.status = false
 				$scope.datas = data.newslist[0]
 			})
 		}])
 		app.controller('zgjmCtrl',['$http',"$scope",function($http,$scope){
-			
 			$scope.change = function(){
 				$scope.status = true
-				$http.get('zgjm.php',{
+				$http.get('../zgjm.php',{
 					params:{
 						word:$scope.word
 					}
@@ -166,7 +168,36 @@
 					$scope.datas = data.newslist[0]
 				})
 			}
-			
+		}])
+		app.controller('hotCtrl',['$http',"$scope",function($http,$scope){
+			$scope.words = "盗墓笔记"
+			$scope.num = 10;
+			$scope.kai = true;
+			$scope.gets = function(a){
+				$scope.status = true
+				$http.get('../hot.php',{
+					params:{
+						word:a,
+						num:$scope.num
+					}
+				}).success(function(data){
+					$scope.status = false
+					$scope.datas = data.newslist
+				})
+			}
+			$scope.loadMore = function(){
+				$scope.num += 5
+				if($scope.kai){
+					$scope.gets($scope.words,$scope.num)
+				}else{
+					$scope.gets($scope.word,$scope.num)
+				}
+			}
+			$scope.search = function(){
+				$scope.kai = false;
+				$scope.gets($scope.word,$scope.num)
+			}
+			$scope.gets($scope.words,$scope.num)
 		}])
 	</script>
 </html>
